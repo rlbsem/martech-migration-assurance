@@ -29,10 +29,17 @@ Read the [generated report](evidence/report.md), [detailed migration proof](evid
 
 Review strengthened historical replay identity, duplicate-snapshot admission, strict sequence typing and wrong-direction catch-up. These fixes have targeted tests and are documented in [validation](validation.md).
 
-This is an executed local migration protocol against synthetic systems, not a deployed SaaS integration. All supported writers cooperate with the local router. Final reconciliation pauses writes. Snapshot size, complete receipt retention and full in-memory auditing constrain scale. No distributed fencing, zero-downtime SLA, cloud deployment, live Salesforce/Data Cloud connection, security certification or production customer use is claimed. Hosted CI and Linux execution remain unobserved for this build.
+This is an executed local migration protocol against synthetic systems, not a deployed SaaS integration. All supported writers cooperate with the local router. Final reconciliation pauses writes. Snapshot size, complete receipt retention and full in-memory auditing constrain scale. No distributed fencing, zero-downtime SLA, cloud deployment, live Salesforce/Data Cloud connection, security certification or production customer use is claimed.
 
-## Before publication
+## Publication record
 
-Extract the archive, create a Python 3.12 environment, follow the [README setup](../README.md), and run `python scripts/verify.py`. Inspect the failed-safety scenarios as well as the successful migration, review the MIT license, then publish to a new repository yourself. Observe both configured CI jobs before adding a passing-CI claim. No remote repository or fabricated commit history was created.
+The repository was published at `rlbsem/martech-migration-assurance` with publication commit `c24660ebf07402c68a41a53a9b62fe309134658c`.
+
+GitHub Actions workflow **Migration preservation and cutover proof** ran against that published build as [run 34798088035](https://github.com/rlbsem/martech-migration-assurance/actions/runs/34798088035). Both configured jobs completed successfully:
+
+- `verify (ubuntu-latest)`
+- `verify (windows-latest)`
+
+Each job installed the locked requirements and completed `python scripts/verify.py` successfully. This supports a passing hosted-CI claim for the published build; it does not imply cloud deployment, live vendor integration, production traffic or customer use.
 
 No implementation work is intentionally deferred for the stated local scope. Vendor adapters, distributed deployment and large-volume experiments are separate future projects, not unfinished features presented as complete.

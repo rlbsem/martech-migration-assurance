@@ -60,10 +60,10 @@ For just the migration story: `python scripts/demo.py`. The verification command
 
 ## Scope of the result
 
-This is an independent synthetic portfolio implementation by Richard Butts. Native Windows execution is demonstrated. CI is configured for Windows and Linux; **hosted CI has not been observed for this build**. No cloud deployment, Salesforce/Data Cloud integration, production traffic, security certification or enterprise SLA is claimed.
+This is an independent synthetic portfolio implementation by Richard Butts. Native Windows execution is demonstrated. Hosted GitHub Actions verification also passed on both Windows and Ubuntu for the published build. No cloud deployment, Salesforce/Data Cloud integration, production traffic, security certification or enterprise SLA is claimed.
 
 The protocol deliberately pauses writes for final reconciliation. It is **not a zero-downtime migration guarantee**. All supported writers use the local coordinator; direct database administrators are outside its fencing boundary. Long snapshots, retained change logs, full in-memory comparison and a single-host router limit scale. Real vendor migration needs adapter-specific snapshot, deletion, retention, transaction and fencing guarantees.
 
 Read the [architecture and mapping contract](docs/architecture.md), [operating procedure](docs/operations.md), and [skeptical review, evidence and limitations](docs/validation.md).
 
-The [finished project handoff](docs/handoff.md) summarizes the selection, executed results and exact publication steps.
+The [finished project handoff](docs/handoff.md) summarizes the selection, executed results and publication record.

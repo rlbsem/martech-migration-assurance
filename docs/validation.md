@@ -4,6 +4,8 @@
 
 The implementation ran locally on Windows with Python 3.12 and native SQLite. Exact versions, test totals and source hashes are in [verification.json](evidence/verification.json); [tests.xml](evidence/tests.xml) records individual tests. The final verification also runs the migration story against newly created system files. No test substitutes an unavailable database with a mock.
 
+After publication, GitHub-hosted verification also completed successfully on both Ubuntu and Windows for commit `c24660ebf07402c68a41a53a9b62fe309134658c`. Both jobs installed the locked requirements and ran `python scripts/verify.py` successfully in [workflow run 34798088035](https://github.com/rlbsem/martech-migration-assurance/actions/runs/34798088035).
+
 Two worker subprocesses actually exit at controlled commit boundaries using `os._exit`: before commit and after commit. The parent reopens the database and retries the same suffix. [Crash evidence](evidence/crashes.json) shows the first case retains the old cursor and the second retains the complete new cursor, with parity after recovery. This is process-failure evidence, not a simulated exception or a claimed power-loss experiment.
 
 The source commits an update/delete/insert from a separate connection during paginated export. WAL preserves the original snapshot; suffix transfer restores parity. Concurrency tests hold a native write in flight while a second thread requests freeze, then verify that freeze drains that write and refuses later writes. These are real local locks and transactions, not a distributed coordination benchmark.
@@ -46,6 +48,6 @@ These corrections are implementation changes with executable checks. They do not
 - Subprocess exits prove recovery at tested transaction boundaries, not sudden power loss, disk corruption, host loss, network partition or backup/restore behavior.
 - Hashes and append-only triggers are local integrity checks. A filesystem owner can replace databases or code. Independent authorization, signed provenance and external attestation are not implemented.
 - The auditor is independently coded from the mapper, but its domain contract is still synthetic and known. It cannot prove that a real enterprise's agreed field definitions are correct.
-- GitHub Actions is supplied for Windows and Linux. Hosted CI, Linux execution, cloud deployment and customer use were not observed during this build. No badges or claims imply otherwise.
+- GitHub Actions verification passed on GitHub-hosted Windows and Ubuntu runners for the published build. Cloud deployment, live vendor integration and customer use remain unobserved and are not claimed.
 
 The [decision record](decision.md) identifies inspected portfolio commits and the user-supplied hiring context. No employment history, revenue result or professional credential is invented or necessary to operate this repository.
