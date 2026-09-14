@@ -1,0 +1,88 @@
+[
+  {
+    "fault": "after_commit",
+    "actual_exit_code": 72,
+    "before_cursor": 18,
+    "reopened_cursor": 20,
+    "final_cursor": 20,
+    "final_reconciliation": {
+      "passed": true,
+      "checks": {
+        "same_lineage": true,
+        "same_watermark": true,
+        "same_log_chain": true,
+        "same_receipts": true,
+        "no_semantic_differences": true,
+        "no_orphans": true,
+        "same_read_contract": true
+      },
+      "differences": [],
+      "source_cursor": 20,
+      "destination_cursor": 20,
+      "source_hash": "7432fdf81723ef5652ab5455654eb678ece6939f10bf90742005158ee106aa08",
+      "destination_hash": "7432fdf81723ef5652ab5455654eb678ece6939f10bf90742005158ee106aa08",
+      "counts": {
+        "source": {
+          "account": 6,
+          "person": 11
+        },
+        "destination": {
+          "account": 6,
+          "person": 11
+        }
+      },
+      "read_contract": {
+        "source": [
+          "person0007"
+        ],
+        "destination": [
+          "person0007"
+        ]
+      }
+    },
+    "command": "python -m migration_lab.worker --crash after_commit"
+  },
+  {
+    "fault": "before_commit",
+    "actual_exit_code": 71,
+    "before_cursor": 18,
+    "reopened_cursor": 18,
+    "final_cursor": 20,
+    "final_reconciliation": {
+      "passed": true,
+      "checks": {
+        "same_lineage": true,
+        "same_watermark": true,
+        "same_log_chain": true,
+        "same_receipts": true,
+        "no_semantic_differences": true,
+        "no_orphans": true,
+        "same_read_contract": true
+      },
+      "differences": [],
+      "source_cursor": 20,
+      "destination_cursor": 20,
+      "source_hash": "4b6ef667704c213e1738e69cbb475fe2a9f802b5dbb1a255c55381575a2f8810",
+      "destination_hash": "4b6ef667704c213e1738e69cbb475fe2a9f802b5dbb1a255c55381575a2f8810",
+      "counts": {
+        "source": {
+          "account": 6,
+          "person": 11
+        },
+        "destination": {
+          "account": 6,
+          "person": 11
+        }
+      },
+      "read_contract": {
+        "source": [
+          "person0007"
+        ],
+        "destination": [
+          "person0007"
+        ]
+      }
+    },
+    "command": "python -m migration_lab.worker --crash before_commit"
+  }
+]

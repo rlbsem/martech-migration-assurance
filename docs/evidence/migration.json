@@ -1,0 +1,896 @@
+{
+  "scenario": "synthetic local customer-platform replacement",
+  "initial_person_count": 120,
+  "snapshot_watermark": 126,
+  "snapshot_seal": "978214dd266e1217d3180f96be91d3321244f95ec5d47f5b3127cdaa9ec8b090",
+  "concurrent_write": [
+    {
+      "system": "legacy",
+      "epoch": 0,
+      "receipt": {
+        "command_id": "during-snapshot",
+        "command_hash": "a60d3efb766c96b4abacd42f9ae07bcf799d03a9af0aaff6c94768a02de445bf",
+        "seq": 127,
+        "event_hash": "2a921612637463b473a02d511bd3e3d2fd9cd150ed3afc2decaac30c977ffb70"
+      }
+    }
+  ],
+  "initial_gap": {
+    "passed": false,
+    "checks": {
+      "same_lineage": true,
+      "same_watermark": false,
+      "same_log_chain": false,
+      "same_receipts": false,
+      "no_semantic_differences": false,
+      "no_orphans": true,
+      "same_read_contract": true
+    },
+    "differences": [
+      {
+        "entity": "person",
+        "id": "person0000",
+        "field": "score",
+        "source": 97,
+        "destination": 0
+      },
+      {
+        "entity": "person",
+        "id": "person0000a",
+        "field": "_record",
+        "source": {
+          "id": "person0000a",
+          "account_id": "org5",
+          "name": "Synthetic Person 11 — Montréal",
+          "status": "paused",
+          "score": 11,
+          "channels": [
+            "email",
+            "web"
+          ],
+          "subscribed": 0,
+          "locale": null,
+          "schema_version": 1
+        },
+        "destination": null
+      },
+      {
+        "entity": "person",
+        "id": "person0010",
+        "field": "_record",
+        "source": null,
+        "destination": {
+          "id": "person0010",
+          "account_id": "org4",
+          "name": "Synthetic Person 10 — Montréal",
+          "status": "customer",
+          "score": 10,
+          "channels": [],
+          "subscribed": 1,
+          "locale": null,
+          "schema_version": 1
+        }
+      }
+    ],
+    "source_cursor": 127,
+    "destination_cursor": 126,
+    "source_hash": "b7d8b4db02680d1b2528fbeac1ae73f638663f41b315a0f7a3c1c54722ff2f60",
+    "destination_hash": "0602c84933b4c582a50ea848e75c2cd2463bb05773e5abb057abdf502d24cec8",
+    "counts": {
+      "source": {
+        "account": 6,
+        "person": 120
+      },
+      "destination": {
+        "account": 6,
+        "person": 120
+      }
+    },
+    "read_contract": {
+      "source": [
+        "person0001",
+        "person0007",
+        "person0013",
+        "person0019",
+        "person0025",
+        "person0031",
+        "person0037",
+        "person0043",
+        "person0049",
+        "person0055",
+        "person0061",
+        "person0067",
+        "person0073",
+        "person0079",
+        "person0085",
+        "person0091",
+        "person0097",
+        "person0103",
+        "person0109",
+        "person0115"
+      ],
+      "destination": [
+        "person0001",
+        "person0007",
+        "person0013",
+        "person0019",
+        "person0025",
+        "person0031",
+        "person0037",
+        "person0043",
+        "person0049",
+        "person0055",
+        "person0061",
+        "person0067",
+        "person0073",
+        "person0079",
+        "person0085",
+        "person0091",
+        "person0097",
+        "person0103",
+        "person0109",
+        "person0115"
+      ]
+    }
+  },
+  "schema_upgrade": {
+    "blocked_reason": "mapping_upgrade_required",
+    "checkpoint_held_at": 127,
+    "recovered_with": 2
+  },
+  "matching_counts_failure": {
+    "hash": "04fa7e6d5a64f9177451eb6860e09e82648e95a9442316ef010b58148a21b178",
+    "epoch": 1,
+    "active": "legacy",
+    "destination": "modern",
+    "implementation": "d9be4cddd29e623b9a696780e3d5404bb7bc051826b56fb67d523057de6516b1",
+    "reconciliation": {
+      "passed": false,
+      "checks": {
+        "same_lineage": true,
+        "same_watermark": true,
+        "same_log_chain": true,
+        "same_receipts": true,
+        "no_semantic_differences": false,
+        "no_orphans": true,
+        "same_read_contract": true
+      },
+      "differences": [
+        {
+          "entity": "person",
+          "id": "person0000",
+          "field": "subscribed",
+          "source": null,
+          "destination": 0
+        }
+      ],
+      "source_cursor": 128,
+      "destination_cursor": 128,
+      "source_hash": "53b885bc1156b96a247589c35b3e9552fc2f091e44fcdb252452ac4be7b9ccc3",
+      "destination_hash": "bc29ed164c1f37285b3c48b937b20439135fda67575f48cd6affd6f6dfed82af",
+      "counts": {
+        "source": {
+          "account": 6,
+          "person": 120
+        },
+        "destination": {
+          "account": 6,
+          "person": 120
+        }
+      },
+      "read_contract": {
+        "source": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ],
+        "destination": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ]
+      }
+    }
+  },
+  "cutover_block_reason": "semantic_parity_required",
+  "stale_proof_block_reason": "stale_or_tampered_proof",
+  "accepted_cutover": {
+    "hash": "3fc26578faeed69cb747de7618730395c8d4835f387fc295ee00e48a31f31784",
+    "epoch": 1,
+    "active": "legacy",
+    "destination": "modern",
+    "implementation": "d9be4cddd29e623b9a696780e3d5404bb7bc051826b56fb67d523057de6516b1",
+    "reconciliation": {
+      "passed": true,
+      "checks": {
+        "same_lineage": true,
+        "same_watermark": true,
+        "same_log_chain": true,
+        "same_receipts": true,
+        "no_semantic_differences": true,
+        "no_orphans": true,
+        "same_read_contract": true
+      },
+      "differences": [],
+      "source_cursor": 128,
+      "destination_cursor": 128,
+      "source_hash": "53b885bc1156b96a247589c35b3e9552fc2f091e44fcdb252452ac4be7b9ccc3",
+      "destination_hash": "53b885bc1156b96a247589c35b3e9552fc2f091e44fcdb252452ac4be7b9ccc3",
+      "counts": {
+        "source": {
+          "account": 6,
+          "person": 120
+        },
+        "destination": {
+          "account": 6,
+          "person": 120
+        }
+      },
+      "read_contract": {
+        "source": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ],
+        "destination": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ]
+      }
+    }
+  },
+  "cutover_route": {
+    "singleton": 1,
+    "active": "modern",
+    "phase": "active",
+    "epoch": 2,
+    "destination": null
+  },
+  "post_cutover_write": {
+    "system": "modern",
+    "epoch": 2,
+    "receipt": {
+      "command_id": "after-cutover",
+      "command_hash": "5890abff700b9d311f3fe35dded65a5da094f4cc7d6e5a5c51478ce4635d761f",
+      "seq": 129,
+      "event_hash": "74cc34de64650f08adbdc551ddce4481e8375133e29703880b5e0e757a0f1b96"
+    }
+  },
+  "rollback_before_catchup": {
+    "hash": "190042e26feff447ede396d6846ae07584902f011ea7c57d45cf73f31ec3628c",
+    "epoch": 3,
+    "active": "modern",
+    "destination": "legacy",
+    "implementation": "d9be4cddd29e623b9a696780e3d5404bb7bc051826b56fb67d523057de6516b1",
+    "reconciliation": {
+      "passed": false,
+      "checks": {
+        "same_lineage": true,
+        "same_watermark": false,
+        "same_log_chain": false,
+        "same_receipts": false,
+        "no_semantic_differences": false,
+        "no_orphans": true,
+        "same_read_contract": true
+      },
+      "differences": [
+        {
+          "entity": "person",
+          "id": "person0003",
+          "field": "score",
+          "source": 99,
+          "destination": 3
+        },
+        {
+          "entity": "person",
+          "id": "person0003",
+          "field": "subscribed",
+          "source": 0,
+          "destination": null
+        }
+      ],
+      "source_cursor": 129,
+      "destination_cursor": 128,
+      "source_hash": "3cacbee5f9d7521e678fcfe7519aa5e6fc25ee321a3c57469239f5b6585888eb",
+      "destination_hash": "53b885bc1156b96a247589c35b3e9552fc2f091e44fcdb252452ac4be7b9ccc3",
+      "counts": {
+        "source": {
+          "account": 6,
+          "person": 120
+        },
+        "destination": {
+          "account": 6,
+          "person": 120
+        }
+      },
+      "read_contract": {
+        "source": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ],
+        "destination": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ]
+      }
+    }
+  },
+  "accepted_rollback": {
+    "hash": "01cea99ce1f4d4c1dc40dbc91a048381b0ae2bbfd76bce159442ec1492a4cdbc",
+    "epoch": 3,
+    "active": "modern",
+    "destination": "legacy",
+    "implementation": "d9be4cddd29e623b9a696780e3d5404bb7bc051826b56fb67d523057de6516b1",
+    "reconciliation": {
+      "passed": true,
+      "checks": {
+        "same_lineage": true,
+        "same_watermark": true,
+        "same_log_chain": true,
+        "same_receipts": true,
+        "no_semantic_differences": true,
+        "no_orphans": true,
+        "same_read_contract": true
+      },
+      "differences": [],
+      "source_cursor": 129,
+      "destination_cursor": 129,
+      "source_hash": "3cacbee5f9d7521e678fcfe7519aa5e6fc25ee321a3c57469239f5b6585888eb",
+      "destination_hash": "3cacbee5f9d7521e678fcfe7519aa5e6fc25ee321a3c57469239f5b6585888eb",
+      "counts": {
+        "source": {
+          "account": 6,
+          "person": 120
+        },
+        "destination": {
+          "account": 6,
+          "person": 120
+        }
+      },
+      "read_contract": {
+        "source": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ],
+        "destination": [
+          "person0001",
+          "person0007",
+          "person0013",
+          "person0019",
+          "person0025",
+          "person0031",
+          "person0037",
+          "person0043",
+          "person0049",
+          "person0055",
+          "person0061",
+          "person0067",
+          "person0073",
+          "person0079",
+          "person0085",
+          "person0091",
+          "person0097",
+          "person0103",
+          "person0109",
+          "person0115"
+        ]
+      }
+    }
+  },
+  "rollback_route": {
+    "singleton": 1,
+    "active": "legacy",
+    "phase": "active",
+    "epoch": 4,
+    "destination": null
+  },
+  "retry_after_rollback": {
+    "system": "legacy",
+    "epoch": 4,
+    "receipt": {
+      "command_id": "after-cutover",
+      "command_hash": "5890abff700b9d311f3fe35dded65a5da094f4cc7d6e5a5c51478ce4635d761f",
+      "seq": 129,
+      "event_hash": "74cc34de64650f08adbdc551ddce4481e8375133e29703880b5e0e757a0f1b96"
+    }
+  },
+  "post_rollback_parity": {
+    "passed": true,
+    "checks": {
+      "same_lineage": true,
+      "same_watermark": true,
+      "same_log_chain": true,
+      "same_receipts": true,
+      "no_semantic_differences": true,
+      "no_orphans": true,
+      "same_read_contract": true
+    },
+    "differences": [],
+    "source_cursor": 129,
+    "destination_cursor": 129,
+    "source_hash": "3cacbee5f9d7521e678fcfe7519aa5e6fc25ee321a3c57469239f5b6585888eb",
+    "destination_hash": "3cacbee5f9d7521e678fcfe7519aa5e6fc25ee321a3c57469239f5b6585888eb",
+    "counts": {
+      "source": {
+        "account": 6,
+        "person": 120
+      },
+      "destination": {
+        "account": 6,
+        "person": 120
+      }
+    },
+    "read_contract": {
+      "source": [
+        "person0001",
+        "person0007",
+        "person0013",
+        "person0019",
+        "person0025",
+        "person0031",
+        "person0037",
+        "person0043",
+        "person0049",
+        "person0055",
+        "person0061",
+        "person0067",
+        "person0073",
+        "person0079",
+        "person0085",
+        "person0091",
+        "person0097",
+        "person0103",
+        "person0109",
+        "person0115"
+      ],
+      "destination": [
+        "person0001",
+        "person0007",
+        "person0013",
+        "person0019",
+        "person0025",
+        "person0031",
+        "person0037",
+        "person0043",
+        "person0049",
+        "person0055",
+        "person0061",
+        "person0067",
+        "person0073",
+        "person0079",
+        "person0085",
+        "person0091",
+        "person0097",
+        "person0103",
+        "person0109",
+        "person0115"
+      ]
+    }
+  },
+  "nonrepresentable_rollback": {
+    "reason": "unrepresentable_legacy_lifecycle",
+    "proof": {
+      "hash": "11529ae1c5d15dba15301d049e2483d47fb1cc7f910d4b2959a74353e85e1445",
+      "epoch": 7,
+      "active": "modern",
+      "destination": "legacy",
+      "implementation": "d9be4cddd29e623b9a696780e3d5404bb7bc051826b56fb67d523057de6516b1",
+      "reconciliation": {
+        "passed": false,
+        "checks": {
+          "same_lineage": true,
+          "same_watermark": false,
+          "same_log_chain": false,
+          "same_receipts": false,
+          "no_semantic_differences": false,
+          "no_orphans": true,
+          "same_read_contract": true
+        },
+        "differences": [
+          {
+            "entity": "person",
+            "id": "person0003",
+            "field": "locale",
+            "source": null,
+            "destination": "fr-CA"
+          },
+          {
+            "entity": "person",
+            "id": "person0003",
+            "field": "schema_version",
+            "source": 1,
+            "destination": 2
+          },
+          {
+            "entity": "person",
+            "id": "person0003",
+            "field": "score",
+            "source": 3,
+            "destination": 99
+          },
+          {
+            "entity": "person",
+            "id": "person0003",
+            "field": "status",
+            "source": "archived",
+            "destination": "prospect"
+          },
+          {
+            "entity": "person",
+            "id": "person0003",
+            "field": "subscribed",
+            "source": null,
+            "destination": 0
+          }
+        ],
+        "source_cursor": 130,
+        "destination_cursor": 129,
+        "source_hash": "d0b08d0e0dbbb64ce8339ee8fc59f194a3936bbd980242e52537c1587a20965c",
+        "destination_hash": "3cacbee5f9d7521e678fcfe7519aa5e6fc25ee321a3c57469239f5b6585888eb",
+        "counts": {
+          "source": {
+            "account": 6,
+            "person": 120
+          },
+          "destination": {
+            "account": 6,
+            "person": 120
+          }
+        },
+        "read_contract": {
+          "source": [
+            "person0001",
+            "person0007",
+            "person0013",
+            "person0019",
+            "person0025",
+            "person0031",
+            "person0037",
+            "person0043",
+            "person0049",
+            "person0055",
+            "person0061",
+            "person0067",
+            "person0073",
+            "person0079",
+            "person0085",
+            "person0091",
+            "person0097",
+            "person0103",
+            "person0109",
+            "person0115"
+          ],
+          "destination": [
+            "person0001",
+            "person0007",
+            "person0013",
+            "person0019",
+            "person0025",
+            "person0031",
+            "person0037",
+            "person0043",
+            "person0049",
+            "person0055",
+            "person0061",
+            "person0067",
+            "person0073",
+            "person0079",
+            "person0085",
+            "person0091",
+            "person0097",
+            "person0103",
+            "person0109",
+            "person0115"
+          ]
+        }
+      }
+    },
+    "resolution": "abort rollback and resume modern; no unsupported data discarded",
+    "route": {
+      "singleton": 1,
+      "active": "modern",
+      "phase": "active",
+      "epoch": 8,
+      "destination": null
+    }
+  },
+  "history": [
+    {
+      "seq": 1,
+      "at": 1789349227.4653125,
+      "event": "writes_frozen",
+      "detail": {
+        "active": "legacy",
+        "destination": "modern",
+        "epoch": 1
+      }
+    },
+    {
+      "seq": 2,
+      "at": 1789349227.4803207,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "04fa7e6d5a64f9177451eb6860e09e82648e95a9442316ef010b58148a21b178",
+        "passed": false
+      }
+    },
+    {
+      "seq": 3,
+      "at": 1789349227.5103362,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "3fc26578faeed69cb747de7618730395c8d4835f387fc295ee00e48a31f31784",
+        "passed": true
+      }
+    },
+    {
+      "seq": 4,
+      "at": 1789349227.5488644,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "3fc26578faeed69cb747de7618730395c8d4835f387fc295ee00e48a31f31784",
+        "passed": true
+      }
+    },
+    {
+      "seq": 5,
+      "at": 1789349227.5638766,
+      "event": "activated",
+      "detail": {
+        "epoch": 2,
+        "from": "legacy",
+        "proof": "3fc26578faeed69cb747de7618730395c8d4835f387fc295ee00e48a31f31784",
+        "to": "modern"
+      }
+    },
+    {
+      "seq": 6,
+      "at": 1789349227.586891,
+      "event": "writes_frozen",
+      "detail": {
+        "active": "modern",
+        "destination": "legacy",
+        "epoch": 3
+      }
+    },
+    {
+      "seq": 7,
+      "at": 1789349227.601903,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "190042e26feff447ede396d6846ae07584902f011ea7c57d45cf73f31ec3628c",
+        "passed": false
+      }
+    },
+    {
+      "seq": 8,
+      "at": 1789349227.6329355,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "01cea99ce1f4d4c1dc40dbc91a048381b0ae2bbfd76bce159442ec1492a4cdbc",
+        "passed": true
+      }
+    },
+    {
+      "seq": 9,
+      "at": 1789349227.649475,
+      "event": "activated",
+      "detail": {
+        "epoch": 4,
+        "from": "modern",
+        "proof": "01cea99ce1f4d4c1dc40dbc91a048381b0ae2bbfd76bce159442ec1492a4cdbc",
+        "to": "legacy"
+      }
+    },
+    {
+      "seq": 10,
+      "at": 1789349227.6664858,
+      "event": "writes_frozen",
+      "detail": {
+        "active": "legacy",
+        "destination": "modern",
+        "epoch": 5
+      }
+    },
+    {
+      "seq": 11,
+      "at": 1789349227.681497,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "c346e0585f9c0ce6bd4bd3e768846c4504438e43f6f2de2baaf32382f45d41b9",
+        "passed": true
+      }
+    },
+    {
+      "seq": 12,
+      "at": 1789349227.6960042,
+      "event": "activated",
+      "detail": {
+        "epoch": 6,
+        "from": "legacy",
+        "proof": "c346e0585f9c0ce6bd4bd3e768846c4504438e43f6f2de2baaf32382f45d41b9",
+        "to": "modern"
+      }
+    },
+    {
+      "seq": 13,
+      "at": 1789349227.7195184,
+      "event": "writes_frozen",
+      "detail": {
+        "active": "modern",
+        "destination": "legacy",
+        "epoch": 7
+      }
+    },
+    {
+      "seq": 14,
+      "at": 1789349227.752591,
+      "event": "cutover_assessed",
+      "detail": {
+        "hash": "11529ae1c5d15dba15301d049e2483d47fb1cc7f910d4b2959a74353e85e1445",
+        "passed": false
+      }
+    },
+    {
+      "seq": 15,
+      "at": 1789349227.763098,
+      "event": "cutover_aborted",
+      "detail": {
+        "active": "modern",
+        "epoch": 8
+      }
+    }
+  ],
+  "transfer_attempts": [
+    {
+      "id": 1,
+      "at": 1789349227.3961911,
+      "outcome": "committed",
+      "detail": {
+        "cursor": 127,
+        "mapping": 1
+      }
+    },
+    {
+      "id": 2,
+      "at": 1789349227.4282858,
+      "outcome": "blocked",
+      "detail": {
+        "mapping": 1,
+        "reason": "mapping_upgrade_required"
+      }
+    },
+    {
+      "id": 3,
+      "at": 1789349227.4442983,
+      "outcome": "committed",
+      "detail": {
+        "cursor": 128,
+        "mapping": 2
+      }
+    }
+  ]
+}

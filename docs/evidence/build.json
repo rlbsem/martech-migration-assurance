@@ -1,0 +1,10 @@
+{
+  "wheel": "martech_migration_assurance-1.0.0-py3-none-any.whl",
+  "wheel_sha256": "95b4b35df85d2ce21e8f64f26ef20451c0cbb8e8ee38aec36b989c3c4009d520",
+  "wheel_package_matches_source": true,
+  "validation": "verification.json",
+  "cutover_and_rollback_proofs_match_source": true,
+  "snapshot_seal_valid": true,
+  "relative_markdown_links_resolve": true,
+  "hosted_ci": "not_observed"
+}
