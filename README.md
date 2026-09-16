@@ -24,6 +24,18 @@ flowchart LR
   P --> G
   N --> R[Reverse change transfer before rollback]
   R --> L
+
+  classDef input fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+  classDef foundation fill:#bfdbfe,stroke:#1d4ed8,color:#0f172a,stroke-width:2px;
+  classDef process fill:#93c5fd,stroke:#1e40af,color:#0f172a,stroke-width:2px;
+  classDef control fill:#60a5fa,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
+  classDef output fill:#2563eb,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
+
+  class W input;
+  class L,N foundation;
+  class S,C,M,R process;
+  class G,A control;
+  class P output;
 ```
 
 ## What runs
