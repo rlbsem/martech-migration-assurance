@@ -4,38 +4,27 @@
 
 This executable lab migrates a small synthetic customer platform between two different relational schemas. It captures changes during a consistent snapshot, proves semantic parity, blocks unsafe cutover, and reverses post-cutover changes before moving writes back.
 
-**Start with the [generated migration report](docs/evidence/report.md).** The most revealing failure has equal record counts and matching log positions: a destination turns an unknown subscription into false. Reconciliation identifies the exact field and blocks the switch. A separate experiment shows why rollback must stop when the new platform accepts a lifecycle value the old one cannot represent.
+**Independent synthetic lab:** fictional organizations and people; no client platform or vendor migration is represented.
 
-This fourth portfolio project adds **system replacement and migration assurance**. It complements analytical truth, authoritative customer state and agent evaluation without rebuilding them. The [portfolio decision](docs/decision.md) compares three directions against the current role priorities and records the inspected public commits.
+**Start with the [generated migration report](docs/evidence/report.md).** The most revealing failure has equal record counts and matching log positions: a destination turns an unknown subscription into false. Reconciliation identifies the exact field and blocks the switch. A separate experiment shows why rollback must stop when the new platform accepts a lifecycle value the old one cannot represent.
 
 ```mermaid
 flowchart LR
-  W[Supported business writers] --> G[Local write router and durable barrier]
-  G --> L[(Legacy platform: native relational schema)]
-  G --> N[(Modern platform: different native schema)]
-  L --> S[Consistent snapshot at W]
-  S --> N
-  L --> C[Sealed change suffix after W]
-  C --> M[Versioned lossless mapping]
-  M --> N
-  L --> A[Independent SQL semantic reconciliation]
-  N --> A
-  A --> P[Fresh evidence bound to barrier and implementation]
-  P --> G
-  N --> R[Reverse change transfer before rollback]
-  R --> L
-
-  classDef input fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
-  classDef foundation fill:#bfdbfe,stroke:#1d4ed8,color:#0f172a,stroke-width:2px;
-  classDef process fill:#93c5fd,stroke:#1e40af,color:#0f172a,stroke-width:2px;
-  classDef control fill:#60a5fa,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
-  classDef output fill:#2563eb,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
-
-  class W input;
-  class L,N foundation;
-  class S,C,M,R process;
-  class G,A control;
-  class P output;
+  L[(Legacy native schema)] --> S[Consistent snapshot at watermark W]
+  S --> M[Versioned lossless mapping]
+  L --> C[Sealed change catch-up after W]
+  C --> M
+  M --> N[(Modern native schema)]
+  L --> V[Independent semantic comparison]
+  N --> V
+  V --> G{Fresh evidence + write barrier}
+  G -->|Parity| R[Route supported writes to modern]
+  G -->|Mismatch| B[Block cutover; retain source route]
+  N --> Q{Reverse mapping represents new writes?}
+  Q -->|Yes: reverse catch-up + parity| K[Route writes back to legacy]
+  Q -->|No| X[Block rollback; resume modern]
+  classDef stop fill:#fff4cc,stroke:#946800,color:#302300;
+  class B,X stop;
 ```
 
 ## What runs
@@ -75,6 +64,8 @@ For just the migration story: `python scripts/demo.py`. The verification command
 This is an independent synthetic portfolio implementation by Richard Butts. Native Windows execution is demonstrated. Hosted GitHub Actions verification also passed on both Windows and Ubuntu for the published build. No cloud deployment, Salesforce/Data Cloud integration, production traffic, security certification or enterprise SLA is claimed.
 
 The protocol deliberately pauses writes for final reconciliation. It is **not a zero-downtime migration guarantee**. All supported writers use the local coordinator; direct database administrators are outside its fencing boundary. Long snapshots, retained change logs, full in-memory comparison and a single-host router limit scale. Real vendor migration needs adapter-specific snapshot, deletion, retention, transaction and fencing guarantees.
+
+This fourth portfolio project adds **system replacement and migration assurance**. It complements analytical truth, authoritative customer state and agent evaluation without rebuilding them. The [portfolio decision](docs/decision.md) compares three directions against the current role priorities and records the inspected public commits.
 
 Read the [architecture and mapping contract](docs/architecture.md), [operating procedure](docs/operations.md), and [skeptical review, evidence and limitations](docs/validation.md).
 
