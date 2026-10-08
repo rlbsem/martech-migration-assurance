@@ -4,8 +4,6 @@
 
 This executable lab migrates a small synthetic customer platform between two different relational schemas. It captures changes during a consistent snapshot, proves semantic parity, blocks unsafe cutover, and reverses post-cutover changes before moving writes back.
 
-**Independent synthetic lab:** fictional organizations and people; no client platform or vendor migration is represented.
-
 **Start with the [generated migration report](docs/evidence/report.md).** The most revealing failure has equal record counts and matching log positions: a destination turns an unknown subscription into false. Reconciliation identifies the exact field and blocks the switch. A separate experiment shows why rollback must stop when the new platform accepts a lifecycle value the old one cannot represent.
 
 ```mermaid
@@ -29,7 +27,7 @@ flowchart LR
 
 ## What runs
 
-The default demonstration uses **six fictional organizations and 120 fictional people**, not a claimed production volume. Legacy and modern platforms have separate SQLite files, native tables, atomic change logs and request receipts. A third small file stores the write route, cutover barrier and evidence history. Python's standard library is the complete runtime dependency set.
+The default demonstration uses **six fictional organizations and 120 fictional people**. Legacy and modern platforms have separate SQLite files, native tables, atomic change logs and request receipts. A third small file stores the write route, cutover barrier and evidence history. Python's standard library is the complete runtime dependency set.
 
 The implementation preserves stable source IDs, relationships, Unicode names, lifecycle states, bounded scores, channel sets, three-valued subscription state and a versioned locale field. It does not perform identity resolution, determine legal consent, send campaigns or connect to a real CRM.
 
@@ -61,7 +59,7 @@ For just the migration story: `python scripts/demo.py`. The verification command
 
 ## Scope of the result
 
-This is an independent synthetic portfolio implementation by Richard Butts. Native Windows execution is demonstrated. Hosted GitHub Actions verification also passed on both Windows and Ubuntu for the published build. No cloud deployment, Salesforce/Data Cloud integration, production traffic, security certification or enterprise SLA is claimed.
+Native Windows execution is demonstrated. Hosted GitHub Actions verification also passed on both Windows and Ubuntu for the published build. Validation covers the local migration protocol; live vendor adapters require separate acceptance testing.
 
 The protocol deliberately pauses writes for final reconciliation. It is **not a zero-downtime migration guarantee**. All supported writers use the local coordinator; direct database administrators are outside its fencing boundary. Long snapshots, retained change logs, full in-memory comparison and a single-host router limit scale. Real vendor migration needs adapter-specific snapshot, deletion, retention, transaction and fencing guarantees.
 
