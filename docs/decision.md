@@ -1,33 +1,19 @@
-# Why a fourth repository
+# Architecture decision — migration assurance
 
-## Inspection before selection
+## Problem and chosen responsibility
 
-The public repositories were fetched and inspected on 2026-09-13. The review included READMEs, architecture, implementation, tests, generated evidence and CI definitions at these commits:
+A system replacement can preserve record counts while silently changing customer and subscription meaning. Correctness needs a consistent source snapshot, ordered catch-up, explicit mapping versions, an independent semantic audit, a write barrier, and a reversal path that accounts for post-cutover writes.
 
-- [Telemetry](https://github.com/rlbsem/game-telemetry-analytics-engineering/tree/205491319fd25c0ad107e25e0e25d2003cb2a5d6): incremental analytical truth, late-event repair, contracts and replay; it already covers much of a new warehouse pipeline's hiring signal.
-- [Control plane](https://github.com/rlbsem/enterprise-martech-ai-control-plane/tree/3b7cef9cf87db0a681d4e2fb284b5736f84e6bc5): authority, identity, consent, durable effects, uncertain outcomes and process recovery. Reimplementing these beneath an activation label would overlap substantially.
-- [Agent runtime](https://github.com/rlbsem/enterprise-agent-runtime-evaluation/tree/bcd3b9379b48b110f886fd65f87df79adab00375): live model behavior, adversarial evaluation and configuration promotion. Another agent or release gate is not the missing capability. A CI file is not treated as evidence that its remote jobs passed.
+This implementation concentrates on **semantic parity, evidence-bound cutover, crash recovery and reverse catch-up**. It does not duplicate the separate concerns of customer identity governance, agent evaluation, or analytics marts.
 
-The role priorities and career context are user-supplied; this decision does not claim independently verified vacancies, hiring outcomes or internal company architecture.
+## Alternatives and controls
 
-## Candidate ranking
-
-Scores are architectural judgment on a 1–5 scale, not empirical hiring probabilities. For overlap, 5 means least duplication. Current-role usefulness receives weight four (twelve total weight units); the other criteria have weight one. This deliberately makes the current search more influential than abstract novelty.
-
-| Criterion | C: migration assurance | A: temporal customer activation | B: revenue integrity |
-|---|---:|---:|---:|
-| Portfolio complementarity | 5 | 3 | 5 |
-| Current-role usefulness (weight 4) | 5 | 5 | 3 |
-| Senior technical hiring signal | 5 | 4 | 5 |
-| Engineering depth | 4 | 5 | 5 |
-| Executable evidence potential | 5 | 5 | 4 |
-| Low overlap risk | 4 | 2 | 5 |
-| Interview defensibility | 4 | 5 | 4 |
-| Long-term portfolio value | 5 | 5 | 5 |
-| New capability not already proved | 5 | 3 | 5 |
-| Weighted total / 60 | **57** | **52** | **50** |
-
-Final ranking: **C first, A second, B third**. Without the extra current-role weight, revenue integrity would outrank temporal activation. With it, activation ranks second. Extreme Networks' integration/migration theme and Neon One's synchronization/data-integrity theme matter more here than optimizing another repository for BMO's already advanced process. Migration's local cooperative-write boundary limits its depth and interview claims, reflected in its scores; it still provides the most useful distinct proof. ShyftLabs benefits from clear incident and dependency evidence, but another code artifact is unlikely to be its deciding factor.
+| Alternative | Decision |
+|---|---|
+| Raw copy and matching record counts | Insufficient to prove relationship and subscription semantics |
+| Generic event bus | Not the key invariant; the important controls are frontier completeness, mapping validity, and write admission |
+| Unconditional rollback | Unsafe after unsupported new-system writes |
+| Independent semantic comparison | Required so acceptance does not reuse the mapper's own assertions |
 
 ## Selected thesis
 
