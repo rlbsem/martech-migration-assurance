@@ -1,12 +1,12 @@
-# Finished repository handoff
+# MarTech Migration Assurance — release and verification
 
 **Selected project:** MarTech Migration Assurance (`martech-migration-assurance`).
 
 **Core question:** Can a customer-platform replacement preserve data meaning and remain reversible after the new system accepts writes?
 
-## Why this direction
+## Technical scope
 
-All three public portfolio repositories were inspected before implementation. The ranking was migration assurance first, temporal customer activation second, revenue integrity third. Migration adds system-replacement evidence to the existing analytics, authority and agent-quality projects and fits the user-supplied integration/migration themes in the Extreme Networks and Neon One opportunities. The [decision record](decision.md) contains the nine-criterion comparison, weights, inspected commits and rejected alternatives.
+This release demonstrates replacement across two native data representations with consistent snapshots, versioned mappings, independent semantic comparison, recoverable cutover and reverse migration. The correctness question is preservation of business meaning across system boundaries, not simply successful record transfer.
 
 ## Built and demonstrated
 
