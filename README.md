@@ -63,7 +63,7 @@ Native Windows execution is demonstrated. Hosted GitHub Actions verification als
 
 The protocol deliberately pauses writes for final reconciliation. It is **not a zero-downtime migration guarantee**. All supported writers use the local coordinator; direct database administrators are outside its fencing boundary. Long snapshots, retained change logs, full in-memory comparison and a single-host router limit scale. Real vendor migration needs adapter-specific snapshot, deletion, retention, transaction and fencing guarantees.
 
-This fourth portfolio project adds **system replacement and migration assurance**. It complements analytical truth, authoritative customer state and agent evaluation without rebuilding them. The [portfolio decision](docs/decision.md) compares three directions against the current role priorities and records the inspected public commits.
+**Engineering boundary:** This implementation addresses preservation of business meaning during platform replacement: reconciling source and target state, proving semantic parity, and making cutover and rollback decisions evidence-bound. It complements the separate problems of governed customer-state execution and commercial reporting, without treating a successful data transfer as proof of a safe migration.
 
 Read the [architecture and mapping contract](docs/architecture.md), [operating procedure](docs/operations.md), and [skeptical review, evidence and limitations](docs/validation.md).
 
