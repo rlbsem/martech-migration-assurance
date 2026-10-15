@@ -7,6 +7,7 @@ This executable lab migrates a small synthetic customer platform between two dif
 **Start with the [generated migration report](docs/evidence/report.md).** The most revealing failure has equal record counts and matching log positions: a destination turns an unknown subscription into false. Reconciliation identifies the exact field and blocks the switch. A separate experiment shows why rollback must stop when the new platform accepts a lifecycle value the old one cannot represent.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"background":"#10101D","primaryColor":"#2A2A3D","primaryTextColor":"#F0F0FF","primaryBorderColor":"#7C7CAF","lineColor":"#B8B8FF","textColor":"#F0F0FF","secondaryColor":"#181825","tertiaryColor":"#2E2E45","fontFamily":"IBM Plex Sans, Arial, sans-serif","fontSize":"15px","edgeLabelBackground":"#10101D"}}}%%
 flowchart LR
   L[(Legacy native schema)] --> S[Consistent snapshot at watermark W]
   S --> M[Versioned lossless mapping]
@@ -21,8 +22,14 @@ flowchart LR
   N --> Q{Reverse mapping represents new writes?}
   Q -->|Yes: reverse catch-up + parity| K[Route writes back to legacy]
   Q -->|No| X[Block rollback; resume modern]
-  classDef stop fill:#fff4cc,stroke:#946800,color:#302300;
+  classDef stop fill:#2E2E45,stroke:#E3BC7F,color:#F0F0FF,stroke-width:2px;
+  classDef source fill:#181825,stroke:#7C7CAF,color:#F0F0FF,stroke-width:1.5px;
+  classDef control fill:#2A2A3D,stroke:#B8B8FF,color:#F0F0FF,stroke-width:1.7px;
+  classDef passed fill:#2E2E45,stroke:#81C5B0,color:#F0F0FF,stroke-width:2px;
   class B,X stop;
+  class L,N source;
+  class S,M,C,V,G,Q control;
+  class R,K passed;
 ```
 
 ## What runs
