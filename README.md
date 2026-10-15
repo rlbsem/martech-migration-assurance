@@ -8,7 +8,7 @@ This executable lab migrates a small synthetic customer platform between two dif
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"background":"#10101D","primaryColor":"#2A2A3D","primaryTextColor":"#F0F0FF","primaryBorderColor":"#7C7CAF","lineColor":"#B8B8FF","textColor":"#F0F0FF","secondaryColor":"#181825","tertiaryColor":"#2E2E45","fontFamily":"IBM Plex Sans, Arial, sans-serif","fontSize":"15px","edgeLabelBackground":"#10101D"}}}%%
-flowchart LR
+flowchart TB
   L[(Legacy native schema)] --> S[Consistent snapshot at watermark W]
   S --> M[Versioned lossless mapping]
   L --> C[Sealed change catch-up after W]
