@@ -4,6 +4,8 @@
 
 This executable lab migrates a small synthetic customer platform between two different relational schemas. It captures changes during a consistent snapshot, proves semantic parity, blocks unsafe cutover, and reverses post-cutover changes before moving writes back.
 
+My Groundbreakers work includes source-to-target mapping, identity continuity and cutover planning across customer and operating systems. This public lab makes one acceptance decision explicit: matching record counts is insufficient when a migration changes subscription meaning, loses relationships or cannot carry new-system writes back safely.
+
 **Start with the [generated migration report](docs/evidence/report.md).** The most revealing failure has equal record counts and matching log positions: a destination turns an unknown subscription into false. Reconciliation identifies the exact field and blocks the switch. A separate experiment shows why rollback must stop when the new platform accepts a lifecycle value the old one cannot represent.
 
 ```mermaid
