@@ -1,6 +1,6 @@
 # MarTech Migration Assurance
 
-**Can we replace a customer platform without losing data meaning—and still roll back after the new system receives writes?**
+**Can we replace a customer platform without losing data meaning, and still roll back after the new system receives writes?**
 
 This executable lab migrates a small synthetic customer platform between two different relational schemas. It captures changes during a consistent snapshot, proves semantic parity, blocks unsafe cutover, and reverses post-cutover changes before moving writes back.
 
