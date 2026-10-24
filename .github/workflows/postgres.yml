@@ -21,12 +21,12 @@ jobs:
           python -m pip install --no-deps --no-build-isolation -e .
       - name: Start isolated loopback PostgreSQL with native logical replication
         run: |
-          docker run -d --name native-cdc-postgres -p 127.0.0.1:55451:5432 -e POSTGRES_HOST_AUTH_METHOD=trust postgres:17.11 -c wal_level=logical -c max_replication_slots=10 -c max_wal_senders=10 -c max_slot_wal_keep_size=256MB
+          docker run -d --name native-cdc-postgres -p 127.0.0.1:55451:55451 -e POSTGRES_HOST_AUTH_METHOD=trust postgres:17.11 -p 55451 -c wal_level=logical -c max_replication_slots=10 -c max_wal_senders=10 -c max_slot_wal_keep_size=256MB
           for attempt in $(seq 1 60); do
-            if docker exec native-cdc-postgres pg_isready -U postgres -d postgres; then break; fi
+            if docker exec native-cdc-postgres pg_isready -p 55451 -U postgres -d postgres; then break; fi
             sleep 1
           done
-          docker exec native-cdc-postgres pg_isready -U postgres -d postgres
+          docker exec native-cdc-postgres pg_isready -p 55451 -U postgres -d postgres
       - run: python scripts/validate_native_repo.py
       - run: python scripts/verify_native.py --workspace work/native-private --output work/native-proof
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

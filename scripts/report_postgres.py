@@ -27,10 +27,10 @@ def main():
         name = result['scenario']
         rows.append(f"| [{name}](native/cases/{name}.json.gz) | {result['outcome']} | {result['independent_sql_observations']} |")
     rows += ['', '## Source and checkpoint boundary', '',
-             f"The exported snapshot was `{handoff['snapshot']['exported_snapshot']}` at consistent LSN "
+             f"In the snapshot-handoff scenario, the exported snapshot was `{handoff['snapshot']['exported_snapshot']}` at consistent LSN "
              f"`{handoff['snapshot']['consistent_lsn']}` using `pgoutput`. The snapshot retained the old row "
-             'while concurrent update/delete/insert transactions were subsequently caught up. ', '',
-             f"The valid cutover barrier was `{cutover['barrier']}` in source transaction "
+             'while concurrent update/delete/insert transactions were subsequently caught up.', '',
+             f"In the separate cutover scenario, the valid barrier was `{cutover['barrier']}` in source transaction "
              f"`{cutover['barrier_source_xid']}`. Native receiver origin LSN was `{cutover['native_origin_lsn']}`; "
              f"the semantic inbox cursor was `{cutover['semantic_cursor']}`. "
              'The barrier, durable native floor, complete mapped prefix and independently read business state matched.', '',
