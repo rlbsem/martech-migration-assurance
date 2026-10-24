@@ -1,0 +1,20 @@
+{
+  "format": "SHA-256 of observed bytes",
+  "files": {
+    "cases/crash_after_commit_before_ack.json.gz": "1f69e521b6661bb1591d13d732d32986b99df0cf425eacb46f0c17f920de4738",
+    "cases/crash_before_commit.json.gz": "96b7a75b184f1dadf8118de294ae7176fa6a2efd2d0f99276e1ad88a566aabba",
+    "cases/fence_drains_writer.json.gz": "158a713e0ca1f62ff32dee55bb9e528689436de2229298f1df107b26888dabe0",
+    "cases/mapping_upgrade.json.gz": "69a83fdc5afb268d6ef88b66dffd264890425971936f4a2c0f5ef25ade6aa1e1",
+    "cases/missing_slot.json.gz": "ca89fb44571d9ab8c7406219409f2e60eb228cc4e262a82a43616d52f0082f7c",
+    "cases/native_disconnect.json.gz": "fef9a70269f08e5dcab0e9d191e2587794f81e506845c6bdccaa5c44ebd9b292",
+    "cases/publication_changed.json.gz": "12a946b084f6246935f0ccdd959a57ef1c52b3c56773f2219855c7f6a9a5c4c3",
+    "cases/restricted_identities.json.gz": "23b8d1ca86a9984f9ddfe334c0db746d9dcd7443f7dbdc208f1c13f778f682e3",
+    "cases/schema_incompatibility.json.gz": "de527994056a689840ad343da5f5c1f96d4917c4ffed936622c31a20183ebfa1",
+    "cases/semantic_cutover.json.gz": "11e566433925e7e9ef4733780d0a3bf88e79c549b78c20193d7945ac49e0eb75",
+    "cases/snapshot_handoff.json.gz": "6978868fefef7d89e50273e92111cc1035b6939f17e815087b357fdfe9be5770",
+    "cases/target_rejection.json.gz": "9f415f0e67da7e36e9d164aa7ce50bc05dcc519cfcebc9c13fd30629130aa858",
+    "cases/unusable_checkpoint.json.gz": "370985f2c897ea1bc0658b1738d4db9e12329f4bcfd3c7e5337a265aede8de7e",
+    "protocol.json": "acef0e77c23ad889eaff82b3e580f83db74030bcc3e8d03ae5d724f0afa48a0d",
+    "results.json": "b6f9dd65ef048168858a18142af275ae8d527792efcf928f6a6eee1ea6a255cc"
+  }
+}

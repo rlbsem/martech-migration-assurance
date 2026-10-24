@@ -52,7 +52,7 @@ The implementation preserves stable source IDs, relationships, Unicode names, li
 
 ## Native PostgreSQL WAL acceptance
 
-An additive lane captures real PostgreSQL WAL through `pgoutput`, establishes a single exported-snapshot boundary, and transforms complete native transactions into the different modern schema. Its durable inbox, semantic checkpoints, replay receipts, restricted SQL identities and source write fence are exercised with real process kills, disconnects, schema failures and independent semantic reconciliation.
+Recorded local native acceptance passed **70 tests and 13 native scenarios**. An additive lane captures real PostgreSQL WAL through `pgoutput`, establishes a single exported-snapshot boundary, and transforms complete native transactions into the different modern schema. Its durable inbox, semantic checkpoints, replay receipts, restricted SQL identities and source write fence are exercised with real process kills, disconnects, schema failures and independent semantic reconciliation.
 
 [Executed native report](docs/evidence/postgres-cdc/report.md) · [Architecture, exact guarantees and reproduction](docs/postgres-cdc.md). This is local synthetic PostgreSQL acceptance, separate from the preserved SQLite migration/rollback records and from production/vendor deployment claims.
 
