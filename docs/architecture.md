@@ -1,5 +1,7 @@
 # Architecture and preservation contract
 
+This page describes the original SQLite lane. The additive [native PostgreSQL CDC lane](postgres-cdc.md) has separate execution evidence, guarantees and limitations.
+
 ## The invariant
 
 At activation, the current and proposed systems must describe the same business records and request history at the same source-change boundary. The router must have drained supported writers before that boundary is assessed. A reverse migration has the same obligations; merely changing a route is insufficient.

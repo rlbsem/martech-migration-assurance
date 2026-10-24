@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-10-24T21:49:37.077300+00:00",
+  "remaining_disposable_resources": {
+    "databases": 0,
+    "slots": 0,
+    "roles": 0,
+    "subscriptions": 0,
+    "origins": 0
+  },
+  "scope": "Separate final catalog read in the task-owned local PostgreSQL cluster; no external/cloud inventory"
+}

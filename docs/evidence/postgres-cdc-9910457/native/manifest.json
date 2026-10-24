@@ -1,0 +1,20 @@
+{
+  "format": "SHA-256 of observed bytes",
+  "files": {
+    "cases/crash_after_commit_before_ack.json.gz": "2f11df36d2990707bd791cb6fd96a2903761db14e42a173080b9386618b956ca",
+    "cases/crash_before_commit.json.gz": "9c1d35ef7704e0d21ca75ec5616264317466daf922b586268c160be02dfa383d",
+    "cases/fence_drains_writer.json.gz": "b09a546580b8611284862922300426a79000133e8f419cc24eeb83dcd9236ce3",
+    "cases/mapping_upgrade.json.gz": "81ad6aac25a77af823838df82b8238919e4ef3aa65649185990f61a9d8bcaed8",
+    "cases/missing_slot.json.gz": "8235aab3d4be1aa5f8905e3c95cc504cccc622e4191c1ebe17893af403df7375",
+    "cases/native_disconnect.json.gz": "ea017c0da2212a10c2ec496fa9d9486e1f121fea8708f051e4879238320b74ee",
+    "cases/publication_changed.json.gz": "b52d9c93e9c91986fce85635e96305a9024e778157710466c9ff8276a0592569",
+    "cases/restricted_identities.json.gz": "60bb1d173fe6648dcaa62f32e888b77e74ee5a551377dd50766cbfc25b519d48",
+    "cases/schema_incompatibility.json.gz": "d388925ab22b30955d59dc3462d010459cf6fcdb619ba241e58abdb9c57ad134",
+    "cases/semantic_cutover.json.gz": "ce1df8152cd2949cad55465c3b731b420d2ff16e1583112dc839a5efba7de7a4",
+    "cases/snapshot_handoff.json.gz": "3d2fd9b12d1bcb0745886e45b0d301fd8c5303f8f96539f9aaa30a8bcef627b2",
+    "cases/target_rejection.json.gz": "a25cccb36017d923def4422552de1eb664b831447caca23de0d339c2d82c8459",
+    "cases/unusable_checkpoint.json.gz": "8f9961f43d24c9b650776f108aafd0f8e808d50a65c087b071d9cbe5867dfbe0",
+    "protocol.json": "f91c3cd4363798633b8263d220fec7e61284abfd49f1dfa3b8bb24d5740d699a",
+    "results.json": "b6f9dd65ef048168858a18142af275ae8d527792efcf928f6a6eee1ea6a255cc"
+  }
+}

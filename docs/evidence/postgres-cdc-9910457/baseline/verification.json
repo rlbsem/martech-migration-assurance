@@ -1,0 +1,16 @@
+{
+  "source_commit": "1d6bb75bf6fb802cc08c27ffaefe71b48b66e528",
+  "tests": 42,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 18.017,
+  "lane": "Unmodified SQLite baseline, existing regression and real process-crash tests",
+  "command": "PYTHONPATH=src python -m pytest -q --junitxml <private-baseline-output>",
+  "historical_evidence_preserved": 17,
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pytest": "8.4.2",
+  "ruff": "0.13.0"
+}

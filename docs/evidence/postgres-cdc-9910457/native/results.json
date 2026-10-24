@@ -1,0 +1,71 @@
+{
+  "qualification": "passed",
+  "checker": "independent raw SQL/inbox/receipt oracle",
+  "scenarios": [
+    {
+      "scenario": "crash_after_commit_before_ack",
+      "outcome": "reconciled",
+      "independent_sql_observations": 6
+    },
+    {
+      "scenario": "crash_before_commit",
+      "outcome": "reconciled",
+      "independent_sql_observations": 6
+    },
+    {
+      "scenario": "fence_drains_writer",
+      "outcome": "reconciled",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "mapping_upgrade",
+      "outcome": "reconciled",
+      "independent_sql_observations": 3
+    },
+    {
+      "scenario": "missing_slot",
+      "outcome": "blocked_as_expected_no_automatic_rebootstrap",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "native_disconnect",
+      "outcome": "reconciled",
+      "independent_sql_observations": 2
+    },
+    {
+      "scenario": "publication_changed",
+      "outcome": "blocked_as_expected_no_automatic_rebootstrap",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "restricted_identities",
+      "outcome": "reconciled",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "schema_incompatibility",
+      "outcome": "blocked_as_expected_no_automatic_rebootstrap",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "semantic_cutover",
+      "outcome": "reconciled",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "snapshot_handoff",
+      "outcome": "reconciled",
+      "independent_sql_observations": 1
+    },
+    {
+      "scenario": "target_rejection",
+      "outcome": "reconciled",
+      "independent_sql_observations": 3
+    },
+    {
+      "scenario": "unusable_checkpoint",
+      "outcome": "blocked_as_expected_no_automatic_rebootstrap",
+      "independent_sql_observations": 1
+    }
+  ]
+}

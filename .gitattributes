@@ -1,0 +1,6 @@
+# Native acceptance source must retain the same bytes across supported checkouts.
+* text=auto eol=lf
+*.gz binary
+# Recorded test reports preserve their observed bytes.
+docs/evidence/postgres-cdc/software/tests.xml binary
+docs/evidence/postgres-cdc-9910457/software/tests.xml binary

@@ -1,0 +1,3 @@
+-r requirements.lock
+# Optional native PostgreSQL acceptance only; SQLite runtime remains dependency-free.
+psycopg2-binary==2.9.11
