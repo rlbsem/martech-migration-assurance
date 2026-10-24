@@ -1,5 +1,7 @@
 # Validation and skeptical review
 
+This page describes the original SQLite lane. The additive [native PostgreSQL CDC lane](postgres-cdc.md) has separate execution evidence, guarantees and limitations.
+
 ## What was executed
 
 The implementation ran locally on Windows with Python 3.12 and native SQLite. Exact versions, test totals and source hashes are in [verification.json](evidence/verification.json); [tests.xml](evidence/tests.xml) records individual tests. The final verification also runs the migration story against newly created system files. No test substitutes an unavailable database with a mock.

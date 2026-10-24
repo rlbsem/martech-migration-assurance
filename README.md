@@ -50,6 +50,12 @@ The implementation preserves stable source IDs, relationships, Unicode names, li
 | Does rollback preserve new-system writes? | Reverse catch-up transfers them before routing back; retry returns the original receipt |
 | Is rollback always possible? | A modern-only lifecycle blocks reverse mapping; abort resumes modern without discarding the value |
 
+## Native PostgreSQL WAL acceptance
+
+An additive lane captures real PostgreSQL WAL through `pgoutput`, establishes a single exported-snapshot boundary, and transforms complete native transactions into the different modern schema. Its durable inbox, semantic checkpoints, replay receipts, restricted SQL identities and source write fence are exercised with real process kills, disconnects, schema failures and independent semantic reconciliation.
+
+[Executed native report](docs/evidence/postgres-cdc/report.md) · [Architecture, exact guarantees and reproduction](docs/postgres-cdc.md). This is local synthetic PostgreSQL acceptance, separate from the preserved SQLite migration/rollback records and from production/vendor deployment claims.
+
 ## Reproduce
 
 Use Python **3.12**, from the extracted repository root:
@@ -62,13 +68,13 @@ python -m pip install --no-deps --no-build-isolation -e .
 python scripts/verify.py
 ```
 
-Verification runs lint, dependency checks, software tests, two actual process-crash experiments and the asserted migration demonstration. It regenerates [evidence](docs/evidence/report.md), [test results](docs/evidence/tests.xml), [crash results](docs/evidence/crashes.json) and a [source-hashed verification record](docs/evidence/verification.json). Each run creates a fresh ignored working directory; no existing operator database is reset. No Docker, paid API or cloud account is required.
+Verification runs lint, dependency checks, software tests, two actual process-crash experiments and the asserted migration demonstration. It writes a fresh proof directory under `work/verification/`; committed historical evidence is preserved. The original published records are [evidence](docs/evidence/report.md), [test results](docs/evidence/tests.xml), [crash results](docs/evidence/crashes.json) and a [source-hashed verification record](docs/evidence/verification.json). Each run creates a fresh ignored working directory; no existing operator database is reset. No Docker, paid API or cloud account is required.
 
 For just the migration story: `python scripts/demo.py`. The verification command also generates the linked crash evidence. [Operations](docs/operations.md) explains how to inspect and extend individual transitions.
 
 ## Scope of the result
 
-Native Windows execution is demonstrated. Hosted GitHub Actions verification also passed on both Windows and Ubuntu for the published build. Validation covers the local migration protocol; live vendor adapters require separate acceptance testing.
+Native Windows SQLite execution is demonstrated. The additive PostgreSQL lane has its own executed evidence and optional dependency set. Hosted GitHub Actions verification also passed on both Windows and Ubuntu for the published build. Validation covers the local migration protocol; live vendor adapters require separate acceptance testing.
 
 The protocol deliberately pauses writes for final reconciliation. It is **not a zero-downtime migration guarantee**. All supported writers use the local coordinator; direct database administrators are outside its fencing boundary. Long snapshots, retained change logs, full in-memory comparison and a single-host router limit scale. Real vendor migration needs adapter-specific snapshot, deletion, retention, transaction and fencing guarantees.
 
@@ -76,4 +82,4 @@ The protocol deliberately pauses writes for final reconciliation. It is **not a 
 
 Read the [architecture and mapping contract](docs/architecture.md), [operating procedure](docs/operations.md), and [skeptical review, evidence and limitations](docs/validation.md).
 
-The [finished project handoff](docs/handoff.md) summarizes the selection, executed results and publication record.
+The [original SQLite project handoff](docs/handoff.md) summarizes the selection, executed results and publication record.

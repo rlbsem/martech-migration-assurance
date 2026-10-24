@@ -1,0 +1,31 @@
+name: migration-native
+services:
+  postgres:
+    image: postgres:17.11
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    command: [postgres, -c, wal_level=logical, -c, max_replication_slots=10, -c, max_wal_senders=10, -c, max_slot_wal_keep_size=256MB]
+    volumes:
+      - native-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U postgres -d postgres]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+  verify:
+    build:
+      context: .
+      args:
+        SOURCE_COMMIT: ${MIGRATION_SOURCE_COMMIT:?Set MIGRATION_SOURCE_COMMIT to the checked-out Git revision}
+    environment:
+      MIGRATION_PG_ADMIN_DSN: host=postgres port=5432 dbname=postgres user=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./work/container-proof:/proof
+networks:
+  default:
+    internal: true
+volumes:
+  native-data:

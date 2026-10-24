@@ -1,4 +1,5 @@
 """One command regenerates tests, real process-crash evidence and the asserted migration report."""
+import argparse
 import hashlib
 import json
 import os
@@ -22,13 +23,16 @@ def manifest():
              if p.is_file() and p.suffix in (".py", ".sql", ".yml") and "__pycache__" not in p.parts
              and not any(v.endswith(".egg-info") for v in p.parts)]
     paths += [ROOT / "requirements.lock", ROOT / "pyproject.toml"]
-    return {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
+    return {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes().replace(b'\r\n', b'\n')).hexdigest() for p in sorted(paths)}
 
 
 def main():
     start = time.monotonic()
-    output = ROOT / "docs/evidence"
-    output.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path)
+    args = parser.parse_args()
+    output = args.output or ROOT / "work/verification" / uuid4().hex
+    output.mkdir(parents=True, exist_ok=False)
     scratch = ROOT / "work/verify" / uuid4().hex
     scratch.mkdir(parents=True)
     installed = Path(migration_lab.__file__).parent
@@ -52,12 +56,12 @@ def main():
     record = {"executed_at": datetime.now(UTC).isoformat(), "python": platform.python_version(),
               "sqlite": sqlite3.sqlite_version, "platform": platform.platform(),
               **{k: int(suite.attrib[k]) for k in ("tests", "failures", "errors", "skipped")},
-              "seconds": round(time.monotonic() - start, 2), "source_sha256": before,
+              "seconds": round(time.monotonic() - start, 2), "hash_format": "SHA-256 with LF text newlines", "source_sha256": before,
               "installation": "source" if installed.resolve() == (ROOT / "src/migration_lab").resolve() else "installed_wheel",
               "hosted_ci": "not_observed" if not os.getenv("GITHUB_ACTIONS") else "workflow_in_progress",
               "external_systems": "synthetic native SQLite schemas; no vendor APIs or cloud services"}
     (output / "verification.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
-    print(f"Verified {record['tests']} tests, two actual process crashes, migration/cutover and rollback.")
+    print(f"Verified {record['tests']} tests, two actual process crashes, migration/cutover and rollback. Evidence: {output}")
 
 
 if __name__ == "__main__":

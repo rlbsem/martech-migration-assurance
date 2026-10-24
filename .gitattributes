@@ -1,0 +1,3 @@
+# Native acceptance source must retain the same bytes across supported checkouts.
+* text=auto eol=lf
+*.gz binary

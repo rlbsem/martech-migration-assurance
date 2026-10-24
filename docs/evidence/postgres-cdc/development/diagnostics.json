@@ -1,0 +1,20 @@
+[
+  {
+    "stage": "replication_search_path",
+    "qualification": "not_qualified_uncommitted_development",
+    "private_original_sha256": "97f2f86a95613c5472734c7c15c7d05afafd79d13ede84ef38e80f0edf0b84c8",
+    "observation": "Initial real native apply failed with SQLSTATE 42P01 because the trigger used an unqualified journal name under the replica search path; schema qualification corrected it."
+  },
+  {
+    "stage": "stopped_stream_policy",
+    "qualification": "not_qualified_uncommitted_development",
+    "private_original_sha256": "f4407a688e152b1dc5491b3304807080976c8011251f3a1d290bee79d30e7e02",
+    "observation": "Three scenarios passed; the disconnect assertion failed because disable_on_error stopped the subscription and the worker returned idle. Stopped unfenced capture now blocks and requires validated explicit resume."
+  },
+  {
+    "stage": "incompatible_lsn_comparison",
+    "qualification": "not_qualified_uncommitted_development",
+    "private_original_sha256": "45e923f61e1c11458bd67d2d79d4679009ba95e6e4f04866a1161cf08c4e0249",
+    "observation": "67 passed and one mapping-upgrade case failed on an invalid comparison between slot restart_lsn and native origin remote_lsn. Replaced it with a transactionally bound monotonic native floor and post-barrier origin match."
+  }
+]
