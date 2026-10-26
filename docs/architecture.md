@@ -14,7 +14,7 @@ The source and destination are intentionally different native relational schemas
 | Person-to-organization relationship | `org_id` foreign key | `company_key` foreign key | No orphan or guessed relationship |
 | Lifecycle | `Lead`, `Customer`, `Hold` | `P`, `C`, `H` | Explicit bijection; no fallback default |
 | Modern-only lifecycle | Unrepresentable | `A` (archived) | Reverse transfer refuses |
-| Score | Integer 0–100 | Integer 0–100 | Exact integer; booleans and clamping rejected |
+| Score | Integer from 0 to 100 | Integer from 0 to 100 | Exact integer; booleans and clamping rejected |
 | Channels | Semicolon-delimited set | JSON array | Same permitted set; canonical ordering; duplicate entries rejected at admission |
 | Subscription observation | SQL NULL / 0 / 1 | `unknown` / `no` / `yes` | Unknown remains distinct from false; no legal interpretation |
 | Locale | Nullable `locale`, schema v2 | Nullable `preferred_locale`, schema v2 | v1 mapper refuses v2 payload; v2 explicitly preserves it |
