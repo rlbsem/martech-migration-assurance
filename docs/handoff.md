@@ -1,4 +1,4 @@
-# MarTech Migration Assurance — release and verification
+# MarTech Migration Assurance: release and verification
 
 **Selected project:** MarTech Migration Assurance (`martech-migration-assurance`).
 

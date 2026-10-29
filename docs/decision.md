@@ -1,4 +1,4 @@
-# Architecture decision — migration assurance
+# Architecture decision: migration assurance
 
 ## Problem and chosen responsibility
 
