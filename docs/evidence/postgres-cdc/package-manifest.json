@@ -8,7 +8,7 @@
     ".github/workflows/verify.yml": "23a0b0bd763faebdbf6a12749b84557ff749316b53b10afc13f9bc86515a394b",
     ".gitignore": "b78cdffe95f828a1d6a211afc07c9127b8ad483f73f88cf621233c65912d5149",
     "Dockerfile": "2b121bddff8c920bec80f4b6b35e38b7ab0f337e8cc42c4836c7418161adf7e9",
-    "LICENSE": "bfa35d897efdd7b0c543024c4d8a4d39feb8d9132f5432c1644f7f74443b4c13",
+    "LICENSE": "1819462f2e141f8a0f1371c5191ad9ceffe1455611b2d2359674485cb7c3a8c5",
     "README.md": "9024884211c52b8b0bb153c4b30c97df125687e8e7e7addf1ddab02e78ce96e5",
     "compose.postgres.yml": "36b972288ef8697467a139cb25b209377038afc578dea5f2fa8a816f13f0a9f9",
     "docs/architecture.md": "30be6eab5f38da4e4f4b28c7f9272cb42ee5f6f086c7474b62858103137ae14a",
